@@ -10,11 +10,11 @@ use Nexmo\Client\Credentials\Basic as NexmoCredentials;
 class NexmoChannelServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
+     * Boot the service provider.
      *
      * @return void
      */
-    public function register()
+    public function boot()
     {
         Notification::extend('nexmo', function ($app) {
             return new Channels\NexmoSmsChannel(
