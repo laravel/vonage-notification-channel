@@ -59,7 +59,7 @@ class NotificationNexmoChannelTest extends TestCase
 class NotificationNexmoChannelTestNotifiable
 {
     use Notifiable;
-    
+
     public $phone_number = '5555555555';
 }
 
