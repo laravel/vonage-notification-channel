@@ -82,7 +82,7 @@ class NexmoMessage
     }
 
     /**
-     * Set the client reference (up to 40 characters)
+     * Set the client reference (up to 40 characters).
      *
      * @param  string  $client_ref
      * @return $this
