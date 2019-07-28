@@ -30,7 +30,7 @@ class NexmoMessage
      *
      * @var string
      */
-    public $client_ref = '';
+    public $clientRef = '';
 
     /**
      * Create a new message instance.
@@ -84,12 +84,12 @@ class NexmoMessage
     /**
      * Set the client reference (up to 40 characters).
      *
-     * @param  string  $client_ref
+     * @param  string  $clientRef
      * @return $this
      */
-    public function clientRef($client_ref)
+    public function clientRef($clientRef)
     {
-        $this->client_ref = $client_ref;
+        $this->clientRef = $clientRef;
 
         return $this;
     }
