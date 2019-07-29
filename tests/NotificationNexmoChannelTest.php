@@ -105,6 +105,6 @@ class NotificationNexmoChannelTestCustomFromAndClientRefNotification extends Not
 {
     public function toNexmo($notifiable)
     {
-        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode()->clientRef('11');
+        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode()->clientReference('11');
     }
 }
