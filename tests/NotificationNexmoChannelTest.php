@@ -31,6 +31,7 @@ class NotificationNexmoChannelTest extends TestCase
             'from' => '4444444444',
             'to' => '5555555555',
             'text' => 'this is my message',
+            'client_ref' => '',
         ]);
 
         $channel->send($notifiable, $notification);
@@ -50,6 +51,27 @@ class NotificationNexmoChannelTest extends TestCase
             'from' => '5554443333',
             'to' => '5555555555',
             'text' => 'this is my message',
+            'client_ref' => '',
+        ]);
+
+        $channel->send($notifiable, $notification);
+    }
+
+    public function testSmsIsSentViaNexmoWithCustomFromAndClientRef()
+    {
+        $notification = new NotificationNexmoChannelTestCustomFromAndClientRefNotification;
+        $notifiable = new NotificationNexmoChannelTestNotifiable;
+
+        $channel = new NexmoSmsChannel(
+            $nexmo = m::mock(Client::class), '4444444444'
+        );
+
+        $nexmo->shouldReceive('message->send')->with([
+            'type' => 'unicode',
+            'from' => '5554443333',
+            'to' => '5555555555',
+            'text' => 'this is my message',
+            'client_ref' => '11',
         ]);
 
         $channel->send($notifiable, $notification);
@@ -76,5 +98,13 @@ class NotificationNexmoChannelTestCustomFromNotification extends Notification
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage('this is my message'))->from('5554443333')->unicode();
+    }
+}
+
+class NotificationNexmoChannelTestCustomFromAndClientRefNotification extends Notification
+{
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode()->clientReference('11');
     }
 }
