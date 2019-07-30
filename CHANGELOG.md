@@ -1,6 +1,6 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.1.0...2.0)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.1.0...master)
 
 
 ## [v2.1.0 (2019-07-30)](https://github.com/laravel/nexmo-notification-channel/compare/v2.0.0...v2.1.0)
