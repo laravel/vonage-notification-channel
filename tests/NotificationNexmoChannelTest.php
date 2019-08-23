@@ -12,7 +12,7 @@ use Illuminate\Notifications\Channels\NexmoSmsChannel;
 
 class NotificationNexmoChannelTest extends TestCase
 {
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
