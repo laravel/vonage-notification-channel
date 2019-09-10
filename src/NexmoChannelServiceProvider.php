@@ -2,9 +2,9 @@
 
 namespace Illuminate\Notifications;
 
-use Nexmo\Client as NexmoClient;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\ServiceProvider;
+use Nexmo\Client as NexmoClient;
 use Nexmo\Client\Credentials\Basic as NexmoCredentials;
 
 class NexmoChannelServiceProvider extends ServiceProvider
