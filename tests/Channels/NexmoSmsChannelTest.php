@@ -12,11 +12,6 @@ use Nexmo\Client;
 
 class NexmoSmsChannelTest extends TestCase
 {
-    protected function tearDown(): void
-    {
-        m::close();
-    }
-
     public function testSmsIsSentViaNexmo()
     {
         $notification = new NotificationNexmoSmsChannelTestNotification;
