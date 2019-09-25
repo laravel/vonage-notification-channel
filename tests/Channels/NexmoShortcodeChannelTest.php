@@ -24,7 +24,7 @@ class NexmoShortcodeChannelTest extends TestCase
             'type' => 'alert',
             'to' => '5555555555',
             'custom' => [
-                'code' => 'abc123'
+                'code' => 'abc123',
             ],
         ]);
 

@@ -8,7 +8,7 @@ use Nexmo\Message\Client as NexmoClient;
 class NexmoShortcodeChannel
 {
     /**
-     * The Nexmo client with keypair credentials.
+     * The Nexmo message client instance.
      *
      * @var \Nexmo\Message\Client
      */
