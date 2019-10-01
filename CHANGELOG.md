@@ -1,6 +1,15 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.1.0...2.0)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.0...2.0)
+
+
+## [v2.2.0 (2019-10-01)](https://github.com/laravel/nexmo-notification-channel/compare/v2.1.0...v2.2.0)
+
+### Added
+- Implement shortcode support ([#24](https://github.com/laravel/nexmo-notification-channel/pull/24))
+
+### Changed
+- Upgrade to nexmo/laravel 2.0 ([#22](https://github.com/laravel/nexmo-notification-channel/pull/22))
 
 
 ## [v2.1.0 (2019-07-30)](https://github.com/laravel/nexmo-notification-channel/compare/v2.0.0...v2.1.0)
