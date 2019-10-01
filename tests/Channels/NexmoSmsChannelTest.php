@@ -1,26 +1,21 @@
 <?php
 
-namespace Illuminate\Tests\Notifications;
+namespace Illuminate\Tests\Notifications\Channels;
 
 use Illuminate\Notifications\Channels\NexmoSmsChannel;
 use Illuminate\Notifications\Messages\NexmoMessage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
+use Illuminate\Tests\Notifications\TestCase;
 use Mockery as m;
 use Nexmo\Client;
-use PHPUnit\Framework\TestCase;
 
-class NotificationNexmoChannelTest extends TestCase
+class NexmoSmsChannelTest extends TestCase
 {
-    protected function tearDown(): void
-    {
-        m::close();
-    }
-
     public function testSmsIsSentViaNexmo()
     {
-        $notification = new NotificationNexmoChannelTestNotification;
-        $notifiable = new NotificationNexmoChannelTestNotifiable;
+        $notification = new NotificationNexmoSmsChannelTestNotification;
+        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
 
         $channel = new NexmoSmsChannel(
             $nexmo = m::mock(Client::class), '4444444444'
@@ -39,8 +34,8 @@ class NotificationNexmoChannelTest extends TestCase
 
     public function testSmsIsSentViaNexmoWithCustomFrom()
     {
-        $notification = new NotificationNexmoChannelTestCustomFromNotification;
-        $notifiable = new NotificationNexmoChannelTestNotifiable;
+        $notification = new NotificationNexmoSmsChannelTestCustomFromNotification;
+        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
 
         $channel = new NexmoSmsChannel(
             $nexmo = m::mock(Client::class), '4444444444'
@@ -59,8 +54,8 @@ class NotificationNexmoChannelTest extends TestCase
 
     public function testSmsIsSentViaNexmoWithCustomFromAndClientRef()
     {
-        $notification = new NotificationNexmoChannelTestCustomFromAndClientRefNotification;
-        $notifiable = new NotificationNexmoChannelTestNotifiable;
+        $notification = new NotificationNexmoSmsChannelTestCustomFromAndClientRefNotification;
+        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
 
         $channel = new NexmoSmsChannel(
             $nexmo = m::mock(Client::class), '4444444444'
@@ -78,14 +73,14 @@ class NotificationNexmoChannelTest extends TestCase
     }
 }
 
-class NotificationNexmoChannelTestNotifiable
+class NotificationNexmoSmsChannelTestNotifiable
 {
     use Notifiable;
 
     public $phone_number = '5555555555';
 }
 
-class NotificationNexmoChannelTestNotification extends Notification
+class NotificationNexmoSmsChannelTestNotification extends Notification
 {
     public function toNexmo($notifiable)
     {
@@ -93,7 +88,7 @@ class NotificationNexmoChannelTestNotification extends Notification
     }
 }
 
-class NotificationNexmoChannelTestCustomFromNotification extends Notification
+class NotificationNexmoSmsChannelTestCustomFromNotification extends Notification
 {
     public function toNexmo($notifiable)
     {
@@ -101,7 +96,7 @@ class NotificationNexmoChannelTestCustomFromNotification extends Notification
     }
 }
 
-class NotificationNexmoChannelTestCustomFromAndClientRefNotification extends Notification
+class NotificationNexmoSmsChannelTestCustomFromAndClientRefNotification extends Notification
 {
     public function toNexmo($notifiable)
     {

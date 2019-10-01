@@ -5,7 +5,7 @@ namespace Illuminate\Notifications;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
 use Nexmo\Client as NexmoClient;
-use Nexmo\Client\Credentials\Basic as NexmoCredentials;
+use Nexmo\Message\Client as NexmoMessageClient;
 
 class NexmoChannelServiceProvider extends ServiceProvider
 {
@@ -19,12 +19,17 @@ class NexmoChannelServiceProvider extends ServiceProvider
         Notification::resolved(function (ChannelManager $service) {
             $service->extend('nexmo', function ($app) {
                 return new Channels\NexmoSmsChannel(
-                    new NexmoClient(new NexmoCredentials(
-                        $this->app['config']['services.nexmo.key'],
-                        $this->app['config']['services.nexmo.secret']
-                    )),
+                    $this->app->make(NexmoClient::class),
                     $this->app['config']['services.nexmo.sms_from']
                 );
+            });
+
+            $service->extend('shortcode', function ($app) {
+                $client = tap($app->make(NexmoMessageClient::class), function ($client) use ($app) {
+                    $client->setClient($app->make(NexmoClient::class));
+                });
+
+                return new Channels\NexmoShortcodeChannel($client);
             });
         });
     }
