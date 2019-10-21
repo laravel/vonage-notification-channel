@@ -20,13 +20,15 @@ class NexmoShortcodeChannelTest extends TestCase
             $nexmo = m::mock(Client::class)
         );
 
-        $nexmo->shouldReceive('sendShortcode')->with([
-            'type' => 'alert',
-            'to' => '5555555555',
-            'custom' => [
-                'code' => 'abc123',
-            ],
-        ]);
+        $nexmo->shouldReceive('sendShortcode')
+            ->with([
+                'type' => 'alert',
+                'to' => '5555555555',
+                'custom' => [
+                    'code' => 'abc123',
+                ],
+            ])
+            ->once();
 
         $channel->send($notifiable, $notification);
     }
@@ -37,6 +39,11 @@ class NotificationNexmoShortcodeChannelTestNotifiable
     use Notifiable;
 
     public $phone_number = '5555555555';
+
+    public function routeNotificationForShortcode($notification)
+    {
+        return $this->phone_number;
+    }
 }
 
 class NotificationNexmoShortcodeChannelTestNotification extends Notification
