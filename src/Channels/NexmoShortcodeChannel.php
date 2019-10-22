@@ -22,7 +22,7 @@ class NexmoShortcodeChannel
      */
     public function __construct(NexmoClient $nexmo)
     {
-        $this->client = $nexmo;
+        $this->nexmo = $nexmo;
     }
 
     /**
