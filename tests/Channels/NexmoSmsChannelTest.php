@@ -21,13 +21,15 @@ class NexmoSmsChannelTest extends TestCase
             $nexmo = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldReceive('message->send')->with([
-            'type' => 'text',
-            'from' => '4444444444',
-            'to' => '5555555555',
-            'text' => 'this is my message',
-            'client_ref' => '',
-        ]);
+        $nexmo->shouldReceive('message->send')
+            ->with([
+                'type' => 'text',
+                'from' => '4444444444',
+                'to' => '5555555555',
+                'text' => 'this is my message',
+                'client_ref' => '',
+            ])
+            ->once();
 
         $channel->send($notifiable, $notification);
     }
@@ -41,13 +43,15 @@ class NexmoSmsChannelTest extends TestCase
             $nexmo = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldReceive('message->send')->with([
-            'type' => 'unicode',
-            'from' => '5554443333',
-            'to' => '5555555555',
-            'text' => 'this is my message',
-            'client_ref' => '',
-        ]);
+        $nexmo->shouldReceive('message->send')
+            ->with([
+                'type' => 'unicode',
+                'from' => '5554443333',
+                'to' => '5555555555',
+                'text' => 'this is my message',
+                'client_ref' => '',
+            ])
+            ->once();
 
         $channel->send($notifiable, $notification);
     }
@@ -61,13 +65,15 @@ class NexmoSmsChannelTest extends TestCase
             $nexmo = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldReceive('message->send')->with([
-            'type' => 'unicode',
-            'from' => '5554443333',
-            'to' => '5555555555',
-            'text' => 'this is my message',
-            'client_ref' => '11',
-        ]);
+        $nexmo->shouldReceive('message->send')
+            ->with([
+                'type' => 'unicode',
+                'from' => '5554443333',
+                'to' => '5555555555',
+                'text' => 'this is my message',
+                'client_ref' => '11',
+            ])
+            ->once();
 
         $channel->send($notifiable, $notification);
     }
@@ -78,6 +84,11 @@ class NotificationNexmoSmsChannelTestNotifiable
     use Notifiable;
 
     public $phone_number = '5555555555';
+
+    public function routeNotificationForNexmo($notification)
+    {
+        return $this->phone_number;
+    }
 }
 
 class NotificationNexmoSmsChannelTestNotification extends Notification

@@ -1,10 +1,16 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.0...master)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.1...master)
 
 ### Changed
 - Dropped support for Laravel 5.8 ([78bc3f9](https://github.com/laravel/nexmo-notification-channel/commit/78bc3f92091f7cd38cdb27de1df845d12f263f24))
 - Dropped support for PHP 7.1 ([858f0cb](https://github.com/laravel/nexmo-notification-channel/commit/858f0cb55c5a3bea671c10f7737926c8c8ffee2c))
+
+
+## [v2.2.1 (2019-10-29)](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.0...v2.2.1)
+
+### Fixed
+- Fix shortcode implementation and test coverage ([#26](https://github.com/laravel/nexmo-notification-channel/pull/26))
 
 
 ## [v2.2.0 (2019-10-01)](https://github.com/laravel/nexmo-notification-channel/compare/v2.1.0...v2.2.0)
