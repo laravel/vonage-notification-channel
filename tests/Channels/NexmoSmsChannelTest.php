@@ -185,7 +185,7 @@ class NotificationNexmoSmsChannelTestCustomClientNotification extends Notificati
 
     public function toNexmo($notifiable)
     {
-        return (new NexmoMessage('this is my message'))->via($this->client);
+        return (new NexmoMessage('this is my message'))->usingClient($this->client);
     }
 }
 
@@ -208,7 +208,7 @@ class NotificationNexmoSmsChannelTestCustomFromAndClientNotification extends Not
 
     public function toNexmo($notifiable)
     {
-        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode()->via($this->client);
+        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode()->usingClient($this->client);
     }
 }
 
@@ -235,6 +235,6 @@ class NotificationNexmoSmsChannelTestCustomClientFromAndClientRefNotification ex
             ->from('5554443333')
             ->unicode()
             ->clientReference('11')
-            ->via($this->client);
+            ->usingClient($this->client);
     }
 }
