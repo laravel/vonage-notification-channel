@@ -33,6 +33,13 @@ class NexmoMessage
     public $clientReference = '';
 
     /**
+     * The custom Nexmo client.
+     *
+     * @var \Nexmo\Client|null
+     */
+    public $client;
+
+    /**
      * Create a new message instance.
      *
      * @param  string  $content
@@ -90,6 +97,19 @@ class NexmoMessage
     public function clientReference($clientReference)
     {
         $this->clientReference = $clientReference;
+
+        return $this;
+    }
+
+    /**
+     * Set the Nexmo client instance.
+     *
+     * @param  \Nexmo\Client  $clientReference
+     * @return $this
+     */
+    public function via($client)
+    {
+        $this->client = $client;
 
         return $this;
     }
