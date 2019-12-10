@@ -1,6 +1,12 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.1...2.0)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.0...2.0)
+
+
+## [v2.3.0 (2019-12-10)](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.1...v2.3.0)
+
+### Added
+- Allow to override Nexmo client via NexmoMessage ([#30](https://github.com/laravel/nexmo-notification-channel/pull/30), [174323b](https://github.com/laravel/nexmo-notification-channel/commit/174323b32e0c2e8881e8dc96702be782e3e49637))
 
 
 ## [v2.2.1 (2019-10-29)](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.0...v2.2.1)
