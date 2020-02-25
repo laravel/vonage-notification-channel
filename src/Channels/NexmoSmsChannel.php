@@ -54,7 +54,7 @@ class NexmoSmsChannel
             $message = new NexmoMessage($message);
         }
 
-        return $this->nexmo->message()->send([
+        return ($message->client ?? $this->nexmo)->message()->send([
             'type' => $message->type,
             'from' => $message->from ?: $this->from,
             'to' => $to,
