@@ -25,7 +25,7 @@ class NexmoChannelServiceProvider extends ServiceProvider
             });
 
             $service->extend('shortcode', function ($app) {
-                $client = tap($app->make(NexmoMessageClient::class), function ($client) use ($app) {
+                $client = tap(new NexmoMessageClient, function ($client) use ($app) {
                     $client->setClient($app->make(NexmoClient::class));
                 });
 
