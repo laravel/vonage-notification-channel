@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^7.2",
+        "composer/package-versions-deprecated": "^1.8",
         "illuminate/notifications": "^6.0|^7.0",
         "nexmo/laravel": "^2.0"
     },
