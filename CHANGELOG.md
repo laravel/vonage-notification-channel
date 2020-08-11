@@ -1,6 +1,12 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.0...2.0)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.1...2.0)
+
+
+## [v2.3.1 (2020-08-11)](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.0...v2.3.1)
+
+### Fixed
+- Fix shortcode messaging with the latest version of nexmo-client ([#37](https://github.com/laravel/nexmo-notification-channel/pull/37))
 
 
 ## [v2.3.0 (2019-12-10)](https://github.com/laravel/nexmo-notification-channel/compare/v2.2.1...v2.3.0)
