@@ -1,6 +1,12 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.1...2.0)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.4.0...2.0)
+
+
+## [v2.4.0 (2020-09-08)](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.1...v2.4.0)
+
+### Added
+- Laravel 8 support ([#38](https://github.com/laravel/nexmo-notification-channel/pull/38))
 
 
 ## [v2.3.1 (2020-08-11)](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.0...v2.3.1)
