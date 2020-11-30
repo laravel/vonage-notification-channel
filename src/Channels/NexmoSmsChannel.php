@@ -60,6 +60,7 @@ class NexmoSmsChannel
             'to' => $to,
             'text' => trim($message->content),
             'client_ref' => $message->clientReference,
+            'callback' => $message->statusCallback,
         ]);
     }
 }
