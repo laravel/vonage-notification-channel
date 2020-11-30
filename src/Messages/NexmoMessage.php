@@ -124,8 +124,8 @@ class NexmoMessage
     /**
      * Set the webhook callback URL to update the message status.
      *
-     * @param  string $callback
-     * @return        $this
+     * @param  string  $callback
+     * @return $this
      */
     public function statusCallback(string $callback)
     {
