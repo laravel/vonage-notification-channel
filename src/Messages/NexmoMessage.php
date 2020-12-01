@@ -119,7 +119,7 @@ class NexmoMessage
         $this->statusCallback = $callback;
 
         return $this;
-    }    
+    }
 
     /**
      * Set the Nexmo client instance.
