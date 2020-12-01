@@ -109,19 +109,6 @@ class NexmoMessage
     }
 
     /**
-     * Set the Nexmo client instance.
-     *
-     * @param  \Nexmo\Client  $clientReference
-     * @return $this
-     */
-    public function usingClient($client)
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
-    /**
      * Set the webhook callback URL to update the message status.
      *
      * @param  string  $callback
@@ -130,6 +117,19 @@ class NexmoMessage
     public function statusCallback(string $callback)
     {
         $this->statusCallback = $callback;
+
+        return $this;
+    }    
+
+    /**
+     * Set the Nexmo client instance.
+     *
+     * @param  \Nexmo\Client  $clientReference
+     * @return $this
+     */
+    public function usingClient($client)
+    {
+        $this->client = $client;
 
         return $this;
     }
