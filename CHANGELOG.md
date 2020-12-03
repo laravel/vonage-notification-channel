@@ -7,6 +7,19 @@
 - Dropped support for PHP 7.1 ([858f0cb](https://github.com/laravel/nexmo-notification-channel/commit/858f0cb55c5a3bea671c10f7737926c8c8ffee2c))
 
 
+## [v2.5.0 (2020-12-03)](https://github.com/laravel/nexmo-notification-channel/compare/v2.4.0...v2.5.0)
+
+### Added
+- PHP 8 Support ([#39](https://github.com/laravel/nexmo-notification-channel/pull/39))
+- Add functionality to process callbacks ([#41](https://github.com/laravel/nexmo-notification-channel/pull/41), [f124a4d](https://github.com/laravel/nexmo-notification-channel/commit/f124a4db6a7824251aa065d83389995745805bc0))
+
+
+## [v2.4.0 (2020-09-08)](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.1...v2.4.0)
+
+### Added
+- Laravel 8 support ([#38](https://github.com/laravel/nexmo-notification-channel/pull/38))
+
+
 ## [v2.3.1 (2020-08-11)](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.0...v2.3.1)
 
 ### Fixed

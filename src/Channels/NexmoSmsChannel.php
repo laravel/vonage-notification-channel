@@ -54,12 +54,18 @@ class NexmoSmsChannel
             $message = new NexmoMessage($message);
         }
 
-        return ($message->client ?? $this->nexmo)->message()->send([
+        $payload = [
             'type' => $message->type,
             'from' => $message->from ?: $this->from,
             'to' => $to,
             'text' => trim($message->content),
             'client_ref' => $message->clientReference,
-        ]);
+        ];
+
+        if ($message->statusCallback) {
+            $payload['client_ref'] = $message->clientReference;
+        }
+
+        return ($message->client ?? $this->nexmo)->message()->send($payload);
     }
 }
