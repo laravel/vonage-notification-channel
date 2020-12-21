@@ -168,7 +168,7 @@ class NexmoSmsChannelTest extends TestCase
                 'from' => '4444444444',
                 'to' => '5555555555',
                 'text' => 'this is my message',
-                'client_ref' => '',
+                'client-ref' => '',
                 'callback' => 'https://example.com',
             ])
             ->once();
