@@ -27,7 +27,7 @@ class NexmoSmsChannelTest extends TestCase
                 'from' => '4444444444',
                 'to' => '5555555555',
                 'text' => 'this is my message',
-                'client_ref' => '',
+                'client-ref' => '',
             ])
             ->once();
 
@@ -43,7 +43,7 @@ class NexmoSmsChannelTest extends TestCase
                 'from' => '4444444444',
                 'to' => '5555555555',
                 'text' => 'this is my message',
-                'client_ref' => '',
+                'client-ref' => '',
             ])
             ->once();
 
@@ -74,7 +74,7 @@ class NexmoSmsChannelTest extends TestCase
                 'from' => '5554443333',
                 'to' => '5555555555',
                 'text' => 'this is my message',
-                'client_ref' => '',
+                'client-ref' => '',
             ])
             ->once();
 
@@ -90,7 +90,7 @@ class NexmoSmsChannelTest extends TestCase
                 'from' => '5554443333',
                 'to' => '5555555555',
                 'text' => 'this is my message',
-                'client_ref' => '',
+                'client-ref' => '',
             ])
             ->once();
 
@@ -121,7 +121,7 @@ class NexmoSmsChannelTest extends TestCase
                 'from' => '5554443333',
                 'to' => '5555555555',
                 'text' => 'this is my message',
-                'client_ref' => '11',
+                'client-ref' => '11',
             ])
             ->once();
 
@@ -137,7 +137,7 @@ class NexmoSmsChannelTest extends TestCase
                 'from' => '5554443333',
                 'to' => '5555555555',
                 'text' => 'this is my message',
-                'client_ref' => '11',
+                'client-ref' => '11',
             ])
             ->once();
 
