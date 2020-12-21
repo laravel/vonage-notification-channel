@@ -63,7 +63,7 @@ class NexmoSmsChannel
         ];
 
         if ($message->statusCallback) {
-            $payload['client_ref'] = $message->clientReference;
+            $payload['callback'] = $message->statusCallback;
         }
 
         return ($message->client ?? $this->nexmo)->message()->send($payload);
