@@ -152,6 +152,29 @@ class NexmoSmsChannelTest extends TestCase
 
         $channel->send($notifiable, $notification);
     }
+
+    public function testCallbackIsApplied()
+    {
+        $notification = new NotificationNexmoSmsChannelTestCallback;
+        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+
+        $channel = new NexmoSmsChannel(
+            $nexmo = m::mock(Client::class), '4444444444'
+        );
+
+        $nexmo->shouldReceive('message->send')
+            ->with([
+                'type' => 'text',
+                'from' => '4444444444',
+                'to' => '5555555555',
+                'text' => 'this is my message',
+                'client_ref' => '',
+                'callback' => 'https://example.com',
+            ])
+            ->once();
+
+        $channel->send($notifiable, $notification);
+    }
 }
 
 class NotificationNexmoSmsChannelTestNotifiable
@@ -236,5 +259,14 @@ class NotificationNexmoSmsChannelTestCustomClientFromAndClientRefNotification ex
             ->unicode()
             ->clientReference('11')
             ->usingClient($this->client);
+    }
+}
+
+class NotificationNexmoSmsChannelTestCallback extends Notification
+{
+    public function toNexmo($notifiable)
+    {
+        return (new NexmoMessage('this is my message'))
+            ->statusCallback('https://example.com');
     }
 }
