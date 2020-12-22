@@ -1,6 +1,13 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.5.0...2.0)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.5.1...2.0)
+
+
+## [v2.5.1 (2020-12-22)](https://github.com/laravel/nexmo-notification-channel/compare/v2.5.0...v2.5.1)
+
+### Fixed
+- Fix callback not being applied ([#44](https://github.com/laravel/nexmo-notification-channel/pull/44))
+- Fix `client-ref` key ([#45](https://github.com/laravel/nexmo-notification-channel/pull/45))
 
 
 ## [v2.5.0 (2020-12-03)](https://github.com/laravel/nexmo-notification-channel/compare/v2.4.0...v2.5.0)
