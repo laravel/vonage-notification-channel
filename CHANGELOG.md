@@ -1,10 +1,17 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.3.1...master)
+## [Unreleased](https://github.com/laravel/nexmo-notification-channel/compare/v2.5.1...master)
 
 ### Changed
 - Dropped support for Laravel 5.8 ([78bc3f9](https://github.com/laravel/nexmo-notification-channel/commit/78bc3f92091f7cd38cdb27de1df845d12f263f24))
 - Dropped support for PHP 7.1 ([858f0cb](https://github.com/laravel/nexmo-notification-channel/commit/858f0cb55c5a3bea671c10f7737926c8c8ffee2c))
+
+
+## [v2.5.1 (2020-12-22)](https://github.com/laravel/nexmo-notification-channel/compare/v2.5.0...v2.5.1)
+
+### Fixed
+- Fix callback not being applied ([#44](https://github.com/laravel/nexmo-notification-channel/pull/44))
+- Fix `client-ref` key ([#45](https://github.com/laravel/nexmo-notification-channel/pull/45))
 
 
 ## [v2.5.0 (2020-12-03)](https://github.com/laravel/nexmo-notification-channel/compare/v2.4.0...v2.5.0)
