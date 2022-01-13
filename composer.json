@@ -1,7 +1,7 @@
 {
-    "name": "laravel/nexmo-notification-channel",
-    "description": "Nexmo Notification Channel for laravel.",
-    "keywords": ["laravel", "notifications", "nexmo"],
+    "name": "laravel/vonage-notification-channel",
+    "description": "Vonage Notification Channel for laravel.",
+    "keywords": ["laravel", "notifications", "vonage", "nexmo"],
     "license": "MIT",
     "authors": [
         {
@@ -12,9 +12,10 @@
     "require": {
         "php": "^8.0",
         "illuminate/notifications": "^8.0",
-        "nexmo/laravel": "^2.4"
+        "vonage/client-core": "^2.10"
     },
     "require-dev": {
+        "guzzlehttp/guzzle": "^7.2",
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^9.3"
     },
@@ -29,7 +30,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
     },
     "extra": {
         "branch-alias": {
@@ -37,7 +41,7 @@
         },
         "laravel": {
             "providers": [
-                "Illuminate\\Notifications\\NexmoChannelServiceProvider"
+                "Illuminate\\Notifications\\VonageChannelServiceProvider"
             ]
         }
     },

@@ -2,26 +2,26 @@
 
 namespace Illuminate\Tests\Notifications\Channels;
 
-use Illuminate\Notifications\Channels\NexmoSmsChannel;
-use Illuminate\Notifications\Messages\NexmoMessage;
+use Illuminate\Notifications\Channels\VonageSmsChannel;
+use Illuminate\Notifications\Messages\VonageMessage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Tests\Notifications\TestCase;
 use Mockery as m;
-use Nexmo\Client;
+use Vonage\Client;
 
-class NexmoSmsChannelTest extends TestCase
+class VonageSmsChannelTest extends TestCase
 {
-    public function testSmsIsSentViaNexmo()
+    public function testSmsIsSentViaVonage()
     {
-        $notification = new NotificationNexmoSmsChannelTestNotification;
-        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+        $notification = new NotificationVonageSmsChannelTestNotification;
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
 
-        $channel = new NexmoSmsChannel(
-            $nexmo = m::mock(Client::class), '4444444444'
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldReceive('message->send')
+        $vonage->shouldReceive('message->send')
             ->with([
                 'type' => 'text',
                 'from' => '4444444444',
@@ -34,10 +34,10 @@ class NexmoSmsChannelTest extends TestCase
         $channel->send($notifiable, $notification);
     }
 
-    public function testSmsIsSentViaNexmoWithCustomClient()
+    public function testSmsIsSentViaVonageWithCustomClient()
     {
-        $customNexmo = m::mock(Client::class);
-        $customNexmo->shouldReceive('message->send')
+        $customVonage = m::mock(Client::class);
+        $customVonage->shouldReceive('message->send')
             ->with([
                 'type' => 'text',
                 'from' => '4444444444',
@@ -47,28 +47,28 @@ class NexmoSmsChannelTest extends TestCase
             ])
             ->once();
 
-        $notification = new NotificationNexmoSmsChannelTestCustomClientNotification($customNexmo);
-        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+        $notification = new NotificationVonageSmsChannelTestCustomClientNotification($customVonage);
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
 
-        $channel = new NexmoSmsChannel(
-            $nexmo = m::mock(Client::class), '4444444444'
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldNotReceive('message->send');
+        $vonage->shouldNotReceive('message->send');
 
         $channel->send($notifiable, $notification);
     }
 
-    public function testSmsIsSentViaNexmoWithCustomFrom()
+    public function testSmsIsSentViaVonageWithCustomFrom()
     {
-        $notification = new NotificationNexmoSmsChannelTestCustomFromNotification;
-        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+        $notification = new NotificationVonageSmsChannelTestCustomFromNotification;
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
 
-        $channel = new NexmoSmsChannel(
-            $nexmo = m::mock(Client::class), '4444444444'
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldReceive('message->send')
+        $vonage->shouldReceive('message->send')
             ->with([
                 'type' => 'unicode',
                 'from' => '5554443333',
@@ -81,10 +81,10 @@ class NexmoSmsChannelTest extends TestCase
         $channel->send($notifiable, $notification);
     }
 
-    public function testSmsIsSentViaNexmoWithCustomFromAndClient()
+    public function testSmsIsSentViaVonageWithCustomFromAndClient()
     {
-        $customNexmo = m::mock(Client::class);
-        $customNexmo->shouldReceive('message->send')
+        $customVonage = m::mock(Client::class);
+        $customVonage->shouldReceive('message->send')
             ->with([
                 'type' => 'unicode',
                 'from' => '5554443333',
@@ -94,28 +94,28 @@ class NexmoSmsChannelTest extends TestCase
             ])
             ->once();
 
-        $notification = new NotificationNexmoSmsChannelTestCustomFromAndClientNotification($customNexmo);
-        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+        $notification = new NotificationVonageSmsChannelTestCustomFromAndClientNotification($customVonage);
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
 
-        $channel = new NexmoSmsChannel(
-            $nexmo = m::mock(Client::class), '4444444444'
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldNotReceive('message->send');
+        $vonage->shouldNotReceive('message->send');
 
         $channel->send($notifiable, $notification);
     }
 
-    public function testSmsIsSentViaNexmoWithCustomFromAndClientRef()
+    public function testSmsIsSentViaVonageWithCustomFromAndClientRef()
     {
-        $notification = new NotificationNexmoSmsChannelTestCustomFromAndClientRefNotification;
-        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+        $notification = new NotificationVonageSmsChannelTestCustomFromAndClientRefNotification;
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
 
-        $channel = new NexmoSmsChannel(
-            $nexmo = m::mock(Client::class), '4444444444'
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldReceive('message->send')
+        $vonage->shouldReceive('message->send')
             ->with([
                 'type' => 'unicode',
                 'from' => '5554443333',
@@ -128,10 +128,10 @@ class NexmoSmsChannelTest extends TestCase
         $channel->send($notifiable, $notification);
     }
 
-    public function testSmsIsSentViaNexmoWithCustomClientFromAndClientRef()
+    public function testSmsIsSentViaVonageWithCustomClientFromAndClientRef()
     {
-        $customNexmo = m::mock(Client::class);
-        $customNexmo->shouldReceive('message->send')
+        $customVonage = m::mock(Client::class);
+        $customVonage->shouldReceive('message->send')
             ->with([
                 'type' => 'unicode',
                 'from' => '5554443333',
@@ -141,28 +141,28 @@ class NexmoSmsChannelTest extends TestCase
             ])
             ->once();
 
-        $notification = new NotificationNexmoSmsChannelTestCustomClientFromAndClientRefNotification($customNexmo);
-        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+        $notification = new NotificationVonageSmsChannelTestCustomClientFromAndClientRefNotification($customVonage);
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
 
-        $channel = new NexmoSmsChannel(
-            $nexmo = m::mock(Client::class), '4444444444'
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldNotReceive('message->send');
+        $vonage->shouldNotReceive('message->send');
 
         $channel->send($notifiable, $notification);
     }
 
     public function testCallbackIsApplied()
     {
-        $notification = new NotificationNexmoSmsChannelTestCallback;
-        $notifiable = new NotificationNexmoSmsChannelTestNotifiable;
+        $notification = new NotificationVonageSmsChannelTestCallback;
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
 
-        $channel = new NexmoSmsChannel(
-            $nexmo = m::mock(Client::class), '4444444444'
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
         );
 
-        $nexmo->shouldReceive('message->send')
+        $vonage->shouldReceive('message->send')
             ->with([
                 'type' => 'text',
                 'from' => '4444444444',
@@ -177,27 +177,27 @@ class NexmoSmsChannelTest extends TestCase
     }
 }
 
-class NotificationNexmoSmsChannelTestNotifiable
+class NotificationVonageSmsChannelTestNotifiable
 {
     use Notifiable;
 
     public $phone_number = '5555555555';
 
-    public function routeNotificationForNexmo($notification)
+    public function routeNotificationForVonage($notification)
     {
         return $this->phone_number;
     }
 }
 
-class NotificationNexmoSmsChannelTestNotification extends Notification
+class NotificationVonageSmsChannelTestNotification extends Notification
 {
-    public function toNexmo($notifiable)
+    public function toVonage($notifiable)
     {
-        return new NexmoMessage('this is my message');
+        return new VonageMessage('this is my message');
     }
 }
 
-class NotificationNexmoSmsChannelTestCustomClientNotification extends Notification
+class NotificationVonageSmsChannelTestCustomClientNotification extends Notification
 {
     private $client;
 
@@ -206,44 +206,21 @@ class NotificationNexmoSmsChannelTestCustomClientNotification extends Notificati
         $this->client = $client;
     }
 
-    public function toNexmo($notifiable)
+    public function toVonage($notifiable)
     {
-        return (new NexmoMessage('this is my message'))->usingClient($this->client);
+        return (new VonageMessage('this is my message'))->usingClient($this->client);
     }
 }
 
-class NotificationNexmoSmsChannelTestCustomFromNotification extends Notification
+class NotificationVonageSmsChannelTestCustomFromNotification extends Notification
 {
-    public function toNexmo($notifiable)
+    public function toVonage($notifiable)
     {
-        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode();
+        return (new VonageMessage('this is my message'))->from('5554443333')->unicode();
     }
 }
 
-class NotificationNexmoSmsChannelTestCustomFromAndClientNotification extends Notification
-{
-    private $client;
-
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-    }
-
-    public function toNexmo($notifiable)
-    {
-        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode()->usingClient($this->client);
-    }
-}
-
-class NotificationNexmoSmsChannelTestCustomFromAndClientRefNotification extends Notification
-{
-    public function toNexmo($notifiable)
-    {
-        return (new NexmoMessage('this is my message'))->from('5554443333')->unicode()->clientReference('11');
-    }
-}
-
-class NotificationNexmoSmsChannelTestCustomClientFromAndClientRefNotification extends Notification
+class NotificationVonageSmsChannelTestCustomFromAndClientNotification extends Notification
 {
     private $client;
 
@@ -252,9 +229,32 @@ class NotificationNexmoSmsChannelTestCustomClientFromAndClientRefNotification ex
         $this->client = $client;
     }
 
-    public function toNexmo($notifiable)
+    public function toVonage($notifiable)
     {
-        return (new NexmoMessage('this is my message'))
+        return (new VonageMessage('this is my message'))->from('5554443333')->unicode()->usingClient($this->client);
+    }
+}
+
+class NotificationVonageSmsChannelTestCustomFromAndClientRefNotification extends Notification
+{
+    public function toVonage($notifiable)
+    {
+        return (new VonageMessage('this is my message'))->from('5554443333')->unicode()->clientReference('11');
+    }
+}
+
+class NotificationVonageSmsChannelTestCustomClientFromAndClientRefNotification extends Notification
+{
+    private $client;
+
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
+    public function toVonage($notifiable)
+    {
+        return (new VonageMessage('this is my message'))
             ->from('5554443333')
             ->unicode()
             ->clientReference('11')
@@ -262,11 +262,11 @@ class NotificationNexmoSmsChannelTestCustomClientFromAndClientRefNotification ex
     }
 }
 
-class NotificationNexmoSmsChannelTestCallback extends Notification
+class NotificationVonageSmsChannelTestCallback extends Notification
 {
-    public function toNexmo($notifiable)
+    public function toVonage($notifiable)
     {
-        return (new NexmoMessage('this is my message'))
+        return (new VonageMessage('this is my message'))
             ->statusCallback('https://example.com');
     }
 }
