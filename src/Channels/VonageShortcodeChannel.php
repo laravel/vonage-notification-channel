@@ -12,7 +12,7 @@ class VonageShortcodeChannel
      *
      * @var \Vonage\Message\Client
      */
-    protected $Vonage;
+    protected $vonage;
 
     /**
      * Create a new channel instance.
