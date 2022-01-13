@@ -22,7 +22,7 @@ class VonageShortcodeChannel
      */
     public function __construct(VonageClient $Vonage)
     {
-        $this->Vonage = $Vonage;
+        $this->vonage = $Vonage;
     }
 
     /**
@@ -40,6 +40,6 @@ class VonageShortcodeChannel
 
         $shortcode = array_merge(['to' => $to], $notification->toShortcode($notifiable));
 
-        $this->Vonage->sendShortcode($shortcode);
+        $this->vonage->sendShortcode($shortcode);
     }
 }
