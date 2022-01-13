@@ -2,7 +2,7 @@
 
 namespace Illuminate\Notifications\Messages;
 
-class NexmoMessage
+class VonageMessage
 {
     /**
      * The message content.
@@ -26,9 +26,9 @@ class NexmoMessage
     public $type = 'text';
 
     /**
-     * The custom Nexmo client instance.
+     * The custom Vonage client instance.
      *
-     * @var \Nexmo\Client|null
+     * @var \Vonage\Client|null
      */
     public $client;
 
@@ -122,9 +122,9 @@ class NexmoMessage
     }
 
     /**
-     * Set the Nexmo client instance.
+     * Set the Vonage client instance.
      *
-     * @param  \Nexmo\Client  $clientReference
+     * @param  \Vonage\Client  $clientReference
      * @return $this
      */
     public function usingClient($client)

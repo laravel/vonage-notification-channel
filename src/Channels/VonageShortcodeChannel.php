@@ -3,26 +3,26 @@
 namespace Illuminate\Notifications\Channels;
 
 use Illuminate\Notifications\Notification;
-use Nexmo\Message\Client as NexmoClient;
+use Vonage\Message\Client as VonageClient;
 
-class NexmoShortcodeChannel
+class VonageShortcodeChannel
 {
     /**
-     * The Nexmo message client instance.
+     * The Vonage message client instance.
      *
-     * @var \Nexmo\Message\Client
+     * @var \Vonage\Message\Client
      */
-    protected $nexmo;
+    protected $vonage;
 
     /**
      * Create a new channel instance.
      *
-     * @param  \Nexmo\Message\Client  $nexmo
+     * @param  \Vonage\Message\Client  $Vonage
      * @return void
      */
-    public function __construct(NexmoClient $nexmo)
+    public function __construct(VonageClient $Vonage)
     {
-        $this->nexmo = $nexmo;
+        $this->vonage = $Vonage;
     }
 
     /**
@@ -40,6 +40,6 @@ class NexmoShortcodeChannel
 
         $shortcode = array_merge(['to' => $to], $notification->toShortcode($notifiable));
 
-        $this->nexmo->sendShortcode($shortcode);
+        $this->vonage->sendShortcode($shortcode);
     }
 }
