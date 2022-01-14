@@ -12,6 +12,7 @@
     "require": {
         "php": "^8.0",
         "illuminate/notifications": "^8.0",
+        "illuminate/support": "^8.0",
         "vonage/client-core": "^2.10"
     },
     "require-dev": {
@@ -42,7 +43,10 @@
         "laravel": {
             "providers": [
                 "Illuminate\\Notifications\\VonageChannelServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Vongae": "Illuminate\\Notifications\\Facades\\Vonage"
+            }
         }
     },
     "minimum-stability": "dev",
