@@ -100,16 +100,16 @@ class VonageChannelServiceProvider extends ServiceProvider
                 $privateKeyCredentials,
                 $basicCredentials
             );
-        } else if ($privateKeyCredentials && $signatureCredentials) {
+        } elseif ($privateKeyCredentials && $signatureCredentials) {
             $credentials = new Client\Credentials\Container(
                 $privateKeyCredentials,
                 $signatureCredentials
             );
-        } else if ($privateKeyCredentials) {
+        } elseif ($privateKeyCredentials) {
             $credentials = $privateKeyCredentials;
-        } else if ($signatureCredentials) {
+        } elseif ($signatureCredentials) {
             $credentials = $signatureCredentials;
-        } else if ($basicCredentials) {
+        } elseif ($basicCredentials) {
             $credentials = $basicCredentials;
         } else {
             $possibleNexmoKeys = [
@@ -122,7 +122,7 @@ class VonageChannelServiceProvider extends ServiceProvider
 
             throw new RuntimeException(
                 'Please provide Nexmo API credentials. Possible combinations: '
-                . join(", ", $possibleNexmoKeys)
+                .join(', ', $possibleNexmoKeys)
             );
         }
 

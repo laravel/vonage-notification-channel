@@ -9,8 +9,7 @@ class TestClientPrivateKeyCredentials extends AbstractTestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application $app
-     *
+     * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
     protected function getEnvironmentSetUp($app)
@@ -21,9 +20,10 @@ class TestClientPrivateKeyCredentials extends AbstractTestCase
 
     /**
      * Test that our Nexmo client is created with
-     * the private key credentials
+     * the private key credentials.
      *
      * @dataProvider classNameProvider
+     *
      * @return void
      */
     public function testClientCreatedWithPrivateKeyCredentials($className)

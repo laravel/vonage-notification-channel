@@ -2,18 +2,17 @@
 
 namespace Nexmo\Laravel\Tests;
 
-use Orchestra\Testbench\TestCase;
-use Nexmo\Laravel\NexmoServiceProvider;
-use Vonage\Client;
 use Nexmo\Client as NexmoClient;
+use Nexmo\Laravel\NexmoServiceProvider;
+use Orchestra\Testbench\TestCase;
+use Vonage\Client;
 
 abstract class AbstractTestCase extends TestCase
 {
     /**
      * Get package providers.
      *
-     * @param  \Illuminate\Foundation\Application $app
-     *
+     * @param  \Illuminate\Foundation\Application  $app
      * @return array
      */
     protected function getPackageProviders($app)
@@ -26,8 +25,7 @@ abstract class AbstractTestCase extends TestCase
     /**
      * Get package aliases.
      *
-     * @param  \Illuminate\Foundation\Application $app
-     *
+     * @param  \Illuminate\Foundation\Application  $app
      * @return array
      */
     protected function getPackageAliases($app)
@@ -40,10 +38,9 @@ abstract class AbstractTestCase extends TestCase
     /**
      * Gets the property of an object of a class.
      *
-     * @param string $class
-     * @param string $property
-     * @param mixed  $object
-     *
+     * @param  string  $class
+     * @param  string  $property
+     * @param  mixed  $object
      * @return mixed
      */
     public function getClassProperty($class, $property, $object)
@@ -56,7 +53,7 @@ abstract class AbstractTestCase extends TestCase
     }
 
     /**
-     * Returns a list of classes we should attempt to create
+     * Returns a list of classes we should attempt to create.
      */
     public function classNameProvider(): array
     {

@@ -2,15 +2,12 @@
 
 namespace Nexmo\Laravel\Tests;
 
-use Vonage\Client;
-
 class TestNoNexmoConfiguration extends AbstractTestCase
 {
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application $app
-     *
+     * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
     protected function getEnvironmentSetUp($app)

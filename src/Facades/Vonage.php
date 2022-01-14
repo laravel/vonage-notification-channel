@@ -2,8 +2,8 @@
 
 namespace Illuminate\Notifications\Facades;
 
-use Vonage\Client;
 use Illuminate\Support\Facades\Facade;
+use Vonage\Client;
 
 class Nexmo extends Facade
 {
