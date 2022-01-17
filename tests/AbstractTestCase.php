@@ -1,11 +1,10 @@
 <?php
 
-namespace Nexmo\Laravel\Tests;
+namespace Illuminate\Tests\Notifications;
 
-use Nexmo\Client as NexmoClient;
-use Nexmo\Laravel\NexmoServiceProvider;
+use Illuminate\Notifications\VonageChannelServiceProvider;
+use ReflectionClass;
 use Orchestra\Testbench\TestCase;
-use Vonage\Client;
 
 abstract class AbstractTestCase extends TestCase
 {
@@ -17,22 +16,7 @@ abstract class AbstractTestCase extends TestCase
      */
     protected function getPackageProviders($app)
     {
-        return [
-            NexmoServiceProvider::class,
-        ];
-    }
-
-    /**
-     * Get package aliases.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return array
-     */
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Nexmo' => \Nexmo\Laravel\Facade\Nexmo::class,
-        ];
+        return [VonageChannelServiceProvider::class];
     }
 
     /**
@@ -45,21 +29,10 @@ abstract class AbstractTestCase extends TestCase
      */
     public function getClassProperty($class, $property, $object)
     {
-        $reflectionClass = new \ReflectionClass($class);
+        $reflectionClass = new ReflectionClass($class);
         $refProperty = $reflectionClass->getProperty($property);
         $refProperty->setAccessible(true);
 
         return $refProperty->getValue($object);
-    }
-
-    /**
-     * Returns a list of classes we should attempt to create.
-     */
-    public function classNameProvider(): array
-    {
-        return [
-            [Client::class],
-            [NexmoClient::class],
-        ];
     }
 }

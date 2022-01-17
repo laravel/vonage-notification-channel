@@ -2,12 +2,18 @@
 
 namespace Illuminate\Notifications;
 
+use Illuminate\Notifications\Channels\VonageShortcodeChannel;
+use Illuminate\Notifications\Channels\VonageSmsChannel;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use RuntimeException;
 use Vonage\Client;
+use Vonage\Client\Credentials\Basic;
+use Vonage\Client\Credentials\Container;
+use Vonage\Client\Credentials\Keypair;
+use Vonage\Client\Credentials\SignatureSecret;
 use Vonage\Message\Client as VonageMessageClient;
 
 class VonageChannelServiceProvider extends ServiceProvider
@@ -27,9 +33,9 @@ class VonageChannelServiceProvider extends ServiceProvider
 
         Notification::resolved(function (ChannelManager $service) {
             $service->extend('vonage', function ($app) {
-                return new Channels\VonageSmsChannel(
-                    $this->app->make(Client::class),
-                    $this->app['config']['services.vonage.sms_from']
+                return new VonageSmsChannel(
+                    $app->make(Client::class),
+                    $app['config']['services.vonage.sms_from']
                 );
             });
 
@@ -38,7 +44,7 @@ class VonageChannelServiceProvider extends ServiceProvider
                     $client->setClient($app->make(Client::class));
                 });
 
-                return new Channels\VonageShortcodeChannel($client);
+                return new VonageShortcodeChannel($client);
             });
         });
     }
@@ -70,41 +76,35 @@ class VonageChannelServiceProvider extends ServiceProvider
         $privateKeyCredentials = null;
 
         if ($privateKey = $config['private_key'] ?? null) {
-            if ($appId = $config['application_id'] ?? null) {
+            if (! $appId = $config['application_id'] ?? null) {
                 throw new RuntimeException('You must provide vonage.application_id when using a private key');
             }
 
-            $privateKeyCredentials = new Client\Credentials\Keypair($this->loadPrivateKey($privateKey), $appId);
+            $privateKeyCredentials = new Keypair($this->loadPrivateKey($privateKey), $appId);
         }
 
         $basicCredentials = null;
 
         if ($apiSecret = $config['api_secret'] ?? null) {
-            $basicCredentials = new Client\Credentials\Basic($config['api_key'], $apiSecret);
+            $basicCredentials = new Basic($config['api_key'], $apiSecret);
         }
 
         $signatureCredentials = null;
 
         if ($signatureSecret = $config['signature_secret'] ?? null) {
-            $signatureCredentials = new Client\Credentials\SignatureSecret($config['api_key'], $signatureSecret);
+            $signatureCredentials = new SignatureSecret($config['api_key'], $signatureSecret);
         }
 
         // We can have basic only, signature only, private key only or we can have
         // private key + basic/signature, so let's work out what's been provided
         if ($basicCredentials && $signatureCredentials) {
-            throw new RuntimeException('Provide either nexmo.api_secret or nexmo.signature_secret');
+            throw new RuntimeException('Provide either vonage.api_secret or vonage.signature_secret');
         }
 
         if ($privateKeyCredentials && $basicCredentials) {
-            $credentials = new Client\Credentials\Container(
-                $privateKeyCredentials,
-                $basicCredentials
-            );
+            $credentials = new Container($privateKeyCredentials, $basicCredentials);
         } elseif ($privateKeyCredentials && $signatureCredentials) {
-            $credentials = new Client\Credentials\Container(
-                $privateKeyCredentials,
-                $signatureCredentials
-            );
+            $credentials = new Container($privateKeyCredentials, $signatureCredentials);
         } elseif ($privateKeyCredentials) {
             $credentials = $privateKeyCredentials;
         } elseif ($signatureCredentials) {
@@ -112,7 +112,7 @@ class VonageChannelServiceProvider extends ServiceProvider
         } elseif ($basicCredentials) {
             $credentials = $basicCredentials;
         } else {
-            $possibleNexmoKeys = [
+            $combinations = [
                 'api_key + api_secret',
                 'api_key + signature_secret',
                 'private_key + application_id',
@@ -121,8 +121,8 @@ class VonageChannelServiceProvider extends ServiceProvider
             ];
 
             throw new RuntimeException(
-                'Please provide Nexmo API credentials. Possible combinations: '
-                .join(', ', $possibleNexmoKeys)
+                'Please provide Vonage API credentials. Possible combinations: '
+                .join(', ', $combinations)
             );
         }
 

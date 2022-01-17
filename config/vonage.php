@@ -12,8 +12,8 @@ return [
     |
     */
 
-    'api_key' => env('VONAGE_KEY', ''),
-    'api_secret' => env('VONAGE_SECRET', ''),
+    'api_key' => env('VONAGE_KEY'),
+    'api_secret' => env('VONAGE_SECRET'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'signature_secret' => env('VONAGE_SIGNATURE_SECRET', ''),
+    'signature_secret' => env('VONAGE_SIGNATURE_SECRET'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,8 +39,8 @@ return [
     |
     */
 
-    'private_key' => env('VONAGE_PRIVATE_KEY', ''),
-    'application_id' =>  env('VONAGE_APPLICATION_ID', ''),
+    'private_key' => env('VONAGE_PRIVATE_KEY'),
+    'application_id' =>  env('VONAGE_APPLICATION_ID'),
 
     /*
     |--------------------------------------------------------------------------
@@ -62,10 +62,10 @@ return [
     | Client Override
     |--------------------------------------------------------------------------
     |
-    | In the event you need to use this with nexmo/client-core, this can be set
+    | In the event you need to use this with vonage/client-core, this can be set
     | to provide a custom HTTP client.
     |
     */
 
-    'http_client' => env('NEXMO_HTTP_CLIENT', ''),
+    'http_client' => env('VONAGE_HTTP_CLIENT'),
 ];

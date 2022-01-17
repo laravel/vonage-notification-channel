@@ -5,7 +5,7 @@ namespace Illuminate\Notifications\Facades;
 use Illuminate\Support\Facades\Facade;
 use Vonage\Client;
 
-class Nexmo extends Facade
+class Vonage extends Facade
 {
     /**
      * Get the registered name of the component.
