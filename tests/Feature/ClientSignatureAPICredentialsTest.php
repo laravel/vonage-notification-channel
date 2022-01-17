@@ -1,11 +1,11 @@
 <?php
 
-namespace Illuminate\Tests\Notifications;
+namespace Illuminate\Notifications\Tests\Feature;
 
 use Vonage\Client;
 use Vonage\Client\Credentials\SignatureSecret;
 
-class ClientSignatureAPICredentialsTest extends AbstractTestCase
+class ClientSignatureAPICredentialsTest extends FeatureTestCase
 {
     protected function getEnvironmentSetUp($app)
     {
@@ -15,16 +15,13 @@ class ClientSignatureAPICredentialsTest extends AbstractTestCase
 
     public function testClientCreatedWithSignatureAPICredentials()
     {
-        $client = app(Client::class);
+        $credentials = $this->app->make(Client::class)->getCredentials();
 
-        $credentialsObject = $this->getClassProperty(Client::class, 'credentials', $client);
-        $credentialsArray = $this->getClassProperty(SignatureSecret::class, 'credentials', $credentialsObject);
-
-        $this->assertInstanceOf(SignatureSecret::class, $credentialsObject);
+        $this->assertInstanceOf(SignatureSecret::class, $credentials);
         $this->assertEquals([
             'api_key' => 'my_api_key',
             'signature_secret' => 'my_signature',
             'signature_method' => 'md5hash',
-        ], $credentialsArray);
+        ], $credentials->asArray());
     }
 }

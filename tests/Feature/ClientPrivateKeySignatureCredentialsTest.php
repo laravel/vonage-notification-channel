@@ -1,13 +1,13 @@
 <?php
 
-namespace Illuminate\Tests\Notifications;
+namespace Illuminate\Notifications\Tests\Feature;
 
 use Vonage\Client;
 use Vonage\Client\Credentials\Container;
 use Vonage\Client\Credentials\Keypair;
 use Vonage\Client\Credentials\SignatureSecret;
 
-class ClientPrivateKeySignatureCredentialsTest extends AbstractTestCase
+class ClientPrivateKeySignatureCredentialsTest extends FeatureTestCase
 {
     protected function getEnvironmentSetUp($app)
     {
@@ -19,15 +19,12 @@ class ClientPrivateKeySignatureCredentialsTest extends AbstractTestCase
 
     public function testClientCreatedWithPrivateKeySignatureCredentials()
     {
-        $client = app(Client::class);
+        $credentials = $this->app->make(Client::class)->getCredentials();
 
-        $credentialsObject = $this->getClassProperty(Client::class, 'credentials', $client);
+        $keypairCredentials = $credentials->asArray()[Keypair::class]->asArray();
+        $signatureCredentials = $credentials->asArray()[SignatureSecret::class]->asArray();
 
-        $credentialsArray = $this->getClassProperty(Container::class, 'credentials', $credentialsObject);
-        $keypairCredentials = $this->getClassProperty(Keypair::class, 'credentials', $credentialsArray[Keypair::class]);
-        $signatureCredentials = $this->getClassProperty(SignatureSecret::class, 'credentials', $credentialsArray[SignatureSecret::class]);
-
-        $this->assertInstanceOf(Container::class, $credentialsObject);
+        $this->assertInstanceOf(Container::class, $credentials);
         $this->assertEquals(['key' => '===FAKE-KEY===', 'application' => 'application-id-123'], $keypairCredentials);
         $this->assertEquals([
             'api_key' => 'my_api_key',

@@ -27,7 +27,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Illuminate\\Tests\\Notifications\\": "tests/"
+            "Illuminate\\Notifications\\Tests\\": "tests/"
         }
     },
     "config": {
@@ -45,7 +45,7 @@
                 "Illuminate\\Notifications\\VonageChannelServiceProvider"
             ],
             "aliases": {
-                "Vongae": "Illuminate\\Notifications\\Facades\\Vonage"
+                "Vonage": "Illuminate\\Notifications\\Facades\\Vonage"
             }
         }
     },

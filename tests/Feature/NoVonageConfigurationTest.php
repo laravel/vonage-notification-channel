@@ -1,15 +1,15 @@
 <?php
 
-namespace Illuminate\Tests\Notifications;
+namespace Illuminate\Notifications\Tests\Feature;
 
 use RuntimeException;
 use Vonage\Client;
 
-class NoVonageConfigurationTest extends AbstractTestCase
+class NoVonageConfigurationTest extends FeatureTestCase
 {
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('nexmo.api_key', 'my_api_key');
+        $app['config']->set('vonage.api_key', 'my_api_key');
     }
 
     public function testWhenNoConfigurationIsGivenExceptionIsRaised()
