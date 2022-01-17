@@ -5,8 +5,8 @@ namespace Illuminate\Notifications\Tests\Unit\Channels;
 use Illuminate\Notifications\Channels\VonageShortcodeChannel;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
-use Mockery as m;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Mockery as m;
 use PHPUnit\Framework\TestCase;
 use Vonage\Message\Client;
 
