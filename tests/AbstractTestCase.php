@@ -3,8 +3,8 @@
 namespace Illuminate\Tests\Notifications;
 
 use Illuminate\Notifications\VonageChannelServiceProvider;
-use ReflectionClass;
 use Orchestra\Testbench\TestCase;
+use ReflectionClass;
 
 abstract class AbstractTestCase extends TestCase
 {
