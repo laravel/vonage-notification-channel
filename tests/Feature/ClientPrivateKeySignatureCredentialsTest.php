@@ -11,7 +11,7 @@ class ClientPrivateKeySignatureCredentialsTest extends FeatureTestCase
 {
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('vonage.private_key', '/path/to/key');
+        $app['config']->set('vonage.private_key', __DIR__.'/../fixtures/private.key');
         $app['config']->set('vonage.application_id', 'application-id-123');
         $app['config']->set('vonage.api_key', 'my_api_key');
         $app['config']->set('vonage.signature_secret', 'my_signature');
