@@ -98,7 +98,7 @@ class VonageChannelServiceProvider extends ServiceProvider
         // We can have basic only, signature only, private key only or we can have
         // private key + basic/signature, so let's work out what's been provided
         if ($basicCredentials && $signatureCredentials) {
-            throw new RuntimeException('Provide either vonage.api_secret or vonage.signature_secret');
+            throw new RuntimeException('Provide either vonage.api_secret or vonage.signature_secret, not both.');
         }
 
         if ($privateKeyCredentials && $basicCredentials) {
