@@ -7,7 +7,7 @@ use Illuminate\Notifications\Channels\VonageSmsChannel;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
 use Vonage\Client;
-use Vonage\Message\Client as VonageMessageClient;
+use Vonage\SMS\Client as VonageSMSClient;
 
 class VonageChannelServiceProvider extends ServiceProvider
 {
@@ -36,12 +36,12 @@ class VonageChannelServiceProvider extends ServiceProvider
             $service->extend('vonage', function ($app) {
                 return new VonageSmsChannel(
                     $app->make(Client::class),
-                    $app['config']['services.vonage.sms_from']
+                    $app['config']['vonage.sms_from']
                 );
             });
 
             $service->extend('shortcode', function ($app) {
-                $client = tap(new VonageMessageClient, function ($client) use ($app) {
+                $client = tap(new \Vonage\Message\Client, function ($client) use ($app) {
                     $client->setClient($app->make(Client::class));
                 });
 
