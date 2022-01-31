@@ -13,7 +13,7 @@ class VonageSmsChannel
      *
      * @var \Vonage\Client
      */
-    protected $vonage;
+    protected $client;
 
     /**
      * The phone number notifications should be sent from.
@@ -25,14 +25,14 @@ class VonageSmsChannel
     /**
      * Create a new Vonage channel instance.
      *
-     * @param  \Vonage\Client  $vonage
+     * @param  \Vonage\Client  $client
      * @param  string  $from
      * @return void
      */
-    public function __construct(VonageClient $vonage, $from)
+    public function __construct(VonageClient $client, $from)
     {
         $this->from = $from;
-        $this->vonage = $vonage;
+        $this->client = $client;
     }
 
     /**
@@ -66,6 +66,6 @@ class VonageSmsChannel
             $payload['callback'] = $message->statusCallback;
         }
 
-        return ($message->client ?? $this->vonage)->message()->send($payload);
+        return ($message->client ?? $this->client)->message()->send($payload);
     }
 }
