@@ -2,7 +2,6 @@
 
 return [
 
-
     'sms_from' => env('VONAGE_SMS_FROM'),
 
     /*
