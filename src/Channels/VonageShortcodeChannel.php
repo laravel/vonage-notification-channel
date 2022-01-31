@@ -3,26 +3,26 @@
 namespace Illuminate\Notifications\Channels;
 
 use Illuminate\Notifications\Notification;
-use Vonage\Message\Client as VonageClient;
+use Vonage\SMS\Client as VonageClient;
 
 class VonageShortcodeChannel
 {
     /**
-     * The Vonage message client instance.
+     * The Vonage SMS client instance.
      *
-     * @var \Vonage\Message\Client
+     * @var \Vonage\SMS\Client
      */
-    protected $vonage;
+    protected $client;
 
     /**
-     * Create a new channel instance.
+     * Create a new shortcode channel instance.
      *
-     * @param  \Vonage\Message\Client  $Vonage
+     * @param  \Vonage\SMS\Client  $client
      * @return void
      */
-    public function __construct(VonageClient $Vonage)
+    public function __construct(VonageClient $client)
     {
-        $this->vonage = $Vonage;
+        $this->client = $client;
     }
 
     /**
