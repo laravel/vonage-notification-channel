@@ -14,14 +14,14 @@ use Vonage\Client\Credentials\SignatureSecret;
 class Vonage
 {
     /**
-     * The config items.
+     * The Vonage configuration.
      *
      * @var array
      */
     protected $config;
 
     /**
-     * The optional HttpClient instance.
+     * The HttpClient instance, if provided.
      *
      * @var \Psr\Http\Client\ClientInterface
      */
@@ -65,7 +65,7 @@ class Vonage
 
         if ($privateKey = $this->config['private_key'] ?? null) {
             if (! $appId = $this->config['application_id'] ?? null) {
-                throw new RuntimeException('You must provide vonage.application_id when using a private key');
+                throw new RuntimeException('You must provide a vonage.application_id when using a private key.');
             }
 
             $privateKeyCredentials = new Keypair($this->loadPrivateKey($privateKey), $appId);
@@ -83,8 +83,6 @@ class Vonage
             $signatureCredentials = new SignatureSecret($this->config['api_key'], $signatureSecret);
         }
 
-        // We can have basic only, signature only, private key only or we can have
-        // private key + basic/signature, so let's work out what's been provided.
         if ($basicCredentials && $signatureCredentials) {
             throw new RuntimeException('Provide either vonage.api_secret or vonage.signature_secret, not both.');
         }
@@ -109,7 +107,7 @@ class Vonage
             ];
 
             throw new RuntimeException(
-                'Please provide Vonage API credentials. Possible combinations: '
+                'Please provide your Vonage API credentials. Possible combinations: '
                 .join(', ', $combinations)
             );
         }
@@ -118,7 +116,7 @@ class Vonage
     }
 
     /**
-     * Load private key contents from root directory.
+     * Load the private key contents from the root directory of the application.
      *
      * @return string
      */
@@ -128,7 +126,6 @@ class Vonage
             return $key;
         }
 
-        // If it's a relative path, start searching in the project root...
         if (! Str::startsWith($key, '/')) {
             $key = base_path($key);
         }

@@ -28,7 +28,7 @@ class VonageChannelServiceProvider extends ServiceProvider
                 $httpClient = $app->make($httpClient);
             } elseif (! class_exists('GuzzleHttp\Client')) {
                 throw new RuntimeException(
-                    'The Vonage client requires a "psr/http-client-implementation" class like Guzzle.'
+                    'The Vonage client requires a "psr/http-client-implementation" class such as Guzzle.'
                 );
             }
 
