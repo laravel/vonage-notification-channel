@@ -2,6 +2,16 @@
 
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | SMS From Number
+    |--------------------------------------------------------------------------
+    |
+    | This setting contains the number that will be used
+    | as the "from" number for any sent text messages.
+    |
+    */
+
     'sms_from' => env('VONAGE_SMS_FROM'),
 
     /*
