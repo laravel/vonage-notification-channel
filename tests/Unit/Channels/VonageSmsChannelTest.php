@@ -1,17 +1,20 @@
 <?php
 
-namespace Illuminate\Tests\Notifications\Channels;
+namespace Illuminate\Notifications\Tests\Unit\Channels;
 
 use Illuminate\Notifications\Channels\VonageSmsChannel;
 use Illuminate\Notifications\Messages\VonageMessage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Tests\Notifications\TestCase;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Vonage\Client;
 
 class VonageSmsChannelTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     public function testSmsIsSentViaVonage()
     {
         $notification = new NotificationVonageSmsChannelTestNotification;
