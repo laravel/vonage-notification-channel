@@ -47,7 +47,7 @@ return [
     |
     | Private keys are used to generate JWTs for authentication. Generation is
     | handled by the library. JWTs are required for newer APIs, such as voice
-    | and media
+    | and media.
     |
     */
 
@@ -60,12 +60,12 @@ return [
     |--------------------------------------------------------------------------
     |
     | Add an application name and version here to identify your application when
-    | making API calls
+    | making API calls.
     |
     */
 
     'app' => [
-        'name' =>  env('VONAGE_APP_NAME', 'VONAGELaravel'),
+        'name' =>  env('VONAGE_APP_NAME', 'Laravel'),
         'version' => env('VONAGE_APP_VERSION', '1.1.2'),
     ],
 
@@ -80,4 +80,5 @@ return [
     */
 
     'http_client' => env('VONAGE_HTTP_CLIENT'),
+
 ];
