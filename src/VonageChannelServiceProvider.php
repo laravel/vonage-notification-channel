@@ -5,6 +5,7 @@ namespace Illuminate\Notifications;
 use Illuminate\Notifications\Channels\VonageSmsChannel;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
+use RuntimeException;
 use Vonage\Client;
 
 class VonageChannelServiceProvider extends ServiceProvider
@@ -25,6 +26,10 @@ class VonageChannelServiceProvider extends ServiceProvider
 
             if ($httpClient = $config['http_client'] ?? null) {
                 $httpClient = $app->make($httpClient);
+            } elseif (! class_exists('GuzzleHttp\Client')) {
+                throw new RuntimeException(
+                    'The Vonage client requires a "psr/http-client-implementation" class like Guzzle.'
+                );
             }
 
             return Vonage::make($app['config']['vonage'], $httpClient)->client();

@@ -75,7 +75,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | In the event you need to use this with vonage/client-core, this can be set
-    | to provide a custom HTTP client.
+    | to provide a custom HTTP client. Needs to be a psr/http-client-implementation.
     |
     */
 
