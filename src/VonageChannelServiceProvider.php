@@ -2,12 +2,10 @@
 
 namespace Illuminate\Notifications;
 
-use Illuminate\Notifications\Channels\VonageShortcodeChannel;
 use Illuminate\Notifications\Channels\VonageSmsChannel;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
 use Vonage\Client;
-use Vonage\SMS\ClientFactory;
 
 class VonageChannelServiceProvider extends ServiceProvider
 {
@@ -38,14 +36,6 @@ class VonageChannelServiceProvider extends ServiceProvider
                     $app->make(Client::class),
                     $app['config']['vonage.sms_from']
                 );
-            });
-
-            $service->extend('shortcode', function ($app) {
-                $client = tap((new ClientFactory)($app), function ($client) use ($app) {
-                    $client->setClient($app->make(Client::class));
-                });
-
-                return new VonageShortcodeChannel($client);
             });
         });
     }
