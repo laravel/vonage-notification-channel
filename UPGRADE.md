@@ -81,9 +81,9 @@ VONAGE_SMS_FROM=15556666666
 
 Once you have defined this environment variable, you may remove the `nexmo` configuration entry from your `services` configuration file.
 
-### Channel Name Changes
+### Notification Channel Name
 
-The channel name for `nexmo` was changed to `vonage`. This means you'll need to update the `nexmo` reference in the `via` method of your notifiables to `vonage`:
+The notification channel's name has been updated to `vonage`. Therefore, you should update all `nexmo` channel references in the `via` methods of your notifications to `vonage`:
 
 ```php
 /**
@@ -98,7 +98,7 @@ public function via($notifiable)
 }
 ```
 
-As well as the channel name when routing notifications:
+In addition, any ad-hoc notifications that were previously routing via `nexmo` should have their routing updated to `vonage`:
 
 ```php
 Notification::route('vonage', '5555555555')->notify(new InvoicePaid($invoice));
