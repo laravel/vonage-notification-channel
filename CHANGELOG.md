@@ -1,6 +1,6 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...4.x)
 
 
 ## [v3.0.0 (2022-02-08)](https://github.com/laravel/vonage-notification-channel/compare/v2.5.1...v3.0.0)
