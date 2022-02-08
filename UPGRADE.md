@@ -38,7 +38,7 @@ If you were depending on functionality from `nexmo/laravel` you may now use it d
 ```php
 use Vonage\Client;
 
-$vonageClient = app()->make(Client::class);
+$vonageClient = app(Client::class);
 ```
 
 If you were using the `Nexmo` facade from `nexmo/laravel`, you should update your code to use the `Vonage` facade instead:
@@ -80,6 +80,29 @@ VONAGE_SMS_FROM=15556666666
 ```
 
 Once you have defined this environment variable, you may remove the `nexmo` configuration entry from your `services` configuration file.
+
+### Channel Name Changes
+
+The channel name for `nexmo` was changed to `vonage`. This means you'll need to update the `nexmo` reference in the `via` method of your notifiables to `vonage`:
+
+```php
+/**
+ * Get the notification's delivery channels.
+ *
+ * @param  mixed  $notifiable
+ * @return array
+ */
+public function via($notifiable)
+{
+    return $notifiable->prefers_sms ? ['vonage'] : ['mail', 'database'];
+}
+```
+
+As well as the channel name when routing notifications:
+
+```php
+Notification::route('vonage', '5555555555')->notify(new InvoicePaid($invoice));
+```
 
 ### Class / Method Renaming
 
