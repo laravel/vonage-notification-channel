@@ -35,12 +35,16 @@ class VonageChannelServiceProvider extends ServiceProvider
             return Vonage::make($app['config']['vonage'], $httpClient)->client();
         });
 
+        $this->app->bind(VonageSmsChannel::class, function ($app) {
+            return new VonageSmsChannel(
+                $app->make(Client::class),
+                $app['config']['vonage.sms_from']
+            );
+        });
+
         Notification::resolved(function (ChannelManager $service) {
             $service->extend('vonage', function ($app) {
-                return new VonageSmsChannel(
-                    $app->make(Client::class),
-                    $app['config']['vonage.sms_from']
-                );
+                return $app->make(VonageSmsChannel::class);
             });
         });
     }
