@@ -2,15 +2,6 @@
 
 ## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...3.x)
 
-## [v3.0.0](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...v3.0.0) - 2022-02-08
-
-### Changed
-
-- Dropped support for Laravel 5.8 ([78bc3f9](https://github.com/laravel/vonage-notification-channel/commit/78bc3f92091f7cd38cdb27de1df845d12f263f24))
-- Dropped support for PHP 7.1 ([858f0cb](https://github.com/laravel/vonage-notification-channel/commit/858f0cb55c5a3bea671c10f7737926c8c8ffee2c))
-- Drop even more Laravel and PHP versions ([#51](https://github.com/laravel/nexmo-notification-channel/pull/51))
-- Rewrote package to Vonage ([#52](https://github.com/laravel/nexmo-notification-channel/pull/52), [#53](https://github.com/laravel/nexmo-notification-channel/pull/53))
-
 ## [v3.0.0 (2022-02-08)](https://github.com/laravel/vonage-notification-channel/compare/v2.5.1...v3.0.0)
 
 ### Changed
