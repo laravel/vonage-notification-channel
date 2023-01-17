@@ -1,6 +1,17 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.1.0...3.x)
+
+## [v3.1.0](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...v3.1.0) - 2023-01-13
+
+### Added
+
+- Laravel v10 Support by @driesvints in https://github.com/laravel/vonage-notification-channel/pull/68
+
+### Changed
+
+- Bind VonageSmsChannel to container by @ankurk91 in https://github.com/laravel/vonage-notification-channel/pull/63
+- Swap Vonage Client to SMS instead of legacy message by @SecondeJK in https://github.com/laravel/vonage-notification-channel/pull/65
 
 ## [v3.0.0 (2022-02-08)](https://github.com/laravel/vonage-notification-channel/compare/v2.5.1...v3.0.0)
 
