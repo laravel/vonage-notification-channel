@@ -76,8 +76,7 @@ class VonageSmsChannelTest extends TestCase
         $mockSms = (new SMS(
             '5555555555',
             '5554443333',
-            'this is my message',
-            'text'
+            'this is my message'
         ));
 
         $vonage->shouldReceive('sms->send')
