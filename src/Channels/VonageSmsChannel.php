@@ -58,7 +58,8 @@ class VonageSmsChannel
         $vonageSms = new SMS(
             $to,
             $message->from ?: $this->from,
-            trim($message->content)
+            trim($message->content),
+            $message->type
         );
 
         $vonageSms->setClientRef($message->clientReference);
