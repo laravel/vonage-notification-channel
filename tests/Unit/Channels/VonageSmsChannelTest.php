@@ -29,7 +29,8 @@ class VonageSmsChannelTest extends TestCase
         $mockSms = (new SMS(
             '5555555555',
             '4444444444',
-            'this is my message'
+            'this is my message',
+            'text'
         ));
 
         $vonage->shouldReceive('sms->send')
@@ -46,7 +47,8 @@ class VonageSmsChannelTest extends TestCase
             ->with(IsEqual::equalTo(new SMS(
                 '5555555555',
                 '4444444444',
-                'this is my message'
+                'this is my message',
+                'text'
             )))
             ->once();
 
@@ -74,7 +76,8 @@ class VonageSmsChannelTest extends TestCase
         $mockSms = (new SMS(
             '5555555555',
             '5554443333',
-            'this is my message'
+            'this is my message',
+            'text'
         ));
 
         $vonage->shouldReceive('sms->send')
@@ -177,7 +180,8 @@ class VonageSmsChannelTest extends TestCase
         $mockSms = (new SMS(
             '5555555555',
             '4444444444',
-            'this is my message'
+            'this is my message',
+            'text'
         ));
 
         $mockSms->setDeliveryReceiptCallback('https://example.com');
