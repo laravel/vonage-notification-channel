@@ -1,6 +1,13 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.1.1...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.1.2...3.x)
+
+## [v3.1.2](https://github.com/laravel/vonage-notification-channel/compare/v3.1.1...v3.1.2) - 2023-01-26
+
+### Fixed
+
+- Revert "Fix the type of the message to save a lot of money 💸" by @driesvints in https://github.com/laravel/vonage-notification-channel/pull/70
+- Revert "Swap Vonage Client to SMS instead of legacy message" by @driesvints in https://github.com/laravel/vonage-notification-channel/pull/71
 
 ## [v3.1.1](https://github.com/laravel/vonage-notification-channel/compare/v3.1.0...v3.1.1) - 2023-01-24
 
