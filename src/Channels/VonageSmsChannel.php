@@ -41,7 +41,7 @@ class VonageSmsChannel
      *
      * @param  mixed  $notifiable
      * @param  \Illuminate\Notifications\Notification  $notification
-     * @return \Vonage\Message\Message
+     * @return \Vonage\SMS\Collection|null
      */
     public function send($notifiable, Notification $notification)
     {
@@ -58,7 +58,8 @@ class VonageSmsChannel
         $vonageSms = new SMS(
             $to,
             $message->from ?: $this->from,
-            trim($message->content)
+            trim($message->content),
+            $message->type
         );
 
         $vonageSms->setClientRef($message->clientReference);

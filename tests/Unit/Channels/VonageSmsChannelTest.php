@@ -29,12 +29,36 @@ class VonageSmsChannelTest extends TestCase
         $mockSms = (new SMS(
             '5555555555',
             '4444444444',
-            'this is my message'
+            'this is my message',
+            'text'
         ));
 
         $vonage->shouldReceive('sms->send')
             ->with(IsEqual::equalTo($mockSms))
             ->once();
+
+        $channel->send($notifiable, $notification);
+    }
+
+    public function testSmsWillSendAsUnicode()
+    {
+        $notification = new NotificationVonageUnicodeSmsChannelTestNotification;
+        $notifiable = new NotificationVonageSmsChannelTestNotifiable;
+
+        $channel = new VonageSmsChannel(
+            $vonage = m::mock(Client::class), '4444444444'
+        );
+
+        $mockSms = (new SMS(
+            '5555555555',
+            '4444444444',
+            'this is my message',
+            'unicode'
+        ));
+
+        $vonage->shouldReceive('sms->send')
+               ->with(IsEqual::equalTo($mockSms))
+               ->once();
 
         $channel->send($notifiable, $notification);
     }
@@ -92,7 +116,6 @@ class VonageSmsChannelTest extends TestCase
             '5555555555',
             '5554443333',
             'this is my message',
-            'unicode'
         );
 
         $customVonage->shouldReceive('sms->send')
@@ -124,7 +147,6 @@ class VonageSmsChannelTest extends TestCase
             '5555555555',
             '5554443333',
             'this is my message',
-            'unicode'
         );
 
         $mockSms->setClientRef('11');
@@ -144,7 +166,6 @@ class VonageSmsChannelTest extends TestCase
             '5555555555',
             '5554443333',
             'this is my message',
-            'unicode'
         );
 
         $mockSms->setClientRef('11');
@@ -210,6 +231,14 @@ class NotificationVonageSmsChannelTestNotification extends Notification
     }
 }
 
+class NotificationVonageUnicodeSmsChannelTestNotification extends Notification
+{
+    public function toVonage($notifiable)
+    {
+        return (new VonageMessage('this is my message'))->unicode();
+    }
+}
+
 class NotificationVonageSmsChannelTestCustomClientNotification extends Notification
 {
     private $client;
@@ -229,7 +258,7 @@ class NotificationVonageSmsChannelTestCustomFromNotification extends Notificatio
 {
     public function toVonage($notifiable)
     {
-        return (new VonageMessage('this is my message'))->from('5554443333')->unicode();
+        return (new VonageMessage('this is my message'))->from('5554443333');
     }
 }
 
@@ -244,7 +273,7 @@ class NotificationVonageSmsChannelTestCustomFromAndClientNotification extends No
 
     public function toVonage($notifiable)
     {
-        return (new VonageMessage('this is my message'))->from('5554443333')->unicode()->usingClient($this->client);
+        return (new VonageMessage('this is my message'))->from('5554443333')->usingClient($this->client);
     }
 }
 
@@ -252,7 +281,7 @@ class NotificationVonageSmsChannelTestCustomFromAndClientRefNotification extends
 {
     public function toVonage($notifiable)
     {
-        return (new VonageMessage('this is my message'))->from('5554443333')->unicode()->clientReference('11');
+        return (new VonageMessage('this is my message'))->from('5554443333')->clientReference('11');
     }
 }
 
@@ -269,7 +298,6 @@ class NotificationVonageSmsChannelTestCustomClientFromAndClientRefNotification e
     {
         return (new VonageMessage('this is my message'))
             ->from('5554443333')
-            ->unicode()
             ->clientReference('11')
             ->usingClient($this->client);
     }
