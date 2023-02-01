@@ -1,15 +1,30 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.1.2...3.x)
 
-## [v3.0.0](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...v3.0.0) - 2022-02-08
+## [v3.1.2](https://github.com/laravel/vonage-notification-channel/compare/v3.1.1...v3.1.2) - 2023-01-26
+
+### Fixed
+
+- Revert "Fix the type of the message to save a lot of money 💸" by @driesvints in https://github.com/laravel/vonage-notification-channel/pull/70
+- Revert "Swap Vonage Client to SMS instead of legacy message" by @driesvints in https://github.com/laravel/vonage-notification-channel/pull/71
+
+## [v3.1.1](https://github.com/laravel/vonage-notification-channel/compare/v3.1.0...v3.1.1) - 2023-01-24
+
+### Fixed
+
+- Fix the type of the message to save a lot of money 💸 by @potsky in https://github.com/laravel/vonage-notification-channel/pull/69
+
+## [v3.1.0](https://github.com/laravel/vonage-notification-channel/compare/v3.0.0...v3.1.0) - 2023-01-13
+
+### Added
+
+- Laravel v10 Support by @driesvints in https://github.com/laravel/vonage-notification-channel/pull/68
 
 ### Changed
 
-- Dropped support for Laravel 5.8 ([78bc3f9](https://github.com/laravel/vonage-notification-channel/commit/78bc3f92091f7cd38cdb27de1df845d12f263f24))
-- Dropped support for PHP 7.1 ([858f0cb](https://github.com/laravel/vonage-notification-channel/commit/858f0cb55c5a3bea671c10f7737926c8c8ffee2c))
-- Drop even more Laravel and PHP versions ([#51](https://github.com/laravel/nexmo-notification-channel/pull/51))
-- Rewrote package to Vonage ([#52](https://github.com/laravel/nexmo-notification-channel/pull/52), [#53](https://github.com/laravel/nexmo-notification-channel/pull/53))
+- Bind VonageSmsChannel to container by @ankurk91 in https://github.com/laravel/vonage-notification-channel/pull/63
+- Swap Vonage Client to SMS instead of legacy message by @SecondeJK in https://github.com/laravel/vonage-notification-channel/pull/65
 
 ## [v3.0.0 (2022-02-08)](https://github.com/laravel/vonage-notification-channel/compare/v2.5.1...v3.0.0)
 
