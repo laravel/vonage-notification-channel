@@ -5,6 +5,7 @@ namespace Illuminate\Notifications\Channels;
 use Illuminate\Notifications\Messages\VonageMessage;
 use Illuminate\Notifications\Notification;
 use Vonage\Client as VonageClient;
+use Vonage\SMS\Message\SMS;
 
 class VonageSmsChannel
 {
@@ -40,7 +41,7 @@ class VonageSmsChannel
      *
      * @param  mixed  $notifiable
      * @param  \Illuminate\Notifications\Notification  $notification
-     * @return \Vonage\Message\Message
+     * @return \Vonage\SMS\Collection|null
      */
     public function send($notifiable, Notification $notification)
     {
@@ -54,18 +55,19 @@ class VonageSmsChannel
             $message = new VonageMessage($message);
         }
 
-        $payload = [
-            'type' => $message->type,
-            'from' => $message->from ?: $this->from,
-            'to' => $to,
-            'text' => trim($message->content),
-            'client-ref' => $message->clientReference,
-        ];
+        $vonageSms = new SMS(
+            $to,
+            $message->from ?: $this->from,
+            trim($message->content),
+            $message->type
+        );
+
+        $vonageSms->setClientRef($message->clientReference);
 
         if ($message->statusCallback) {
-            $payload['callback'] = $message->statusCallback;
+            $vonageSms->setDeliveryReceiptCallback($message->statusCallback);
         }
 
-        return ($message->client ?? $this->client)->message()->send($payload);
+        return ($message->client ?? $this->client)->sms()->send($vonageSms);
     }
 }

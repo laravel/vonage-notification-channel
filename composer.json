@@ -13,7 +13,7 @@
         "php": "^8.0",
         "illuminate/notifications": "^8.0|^9.0|^10.0",
         "illuminate/support": "^8.0|^9.0|^10.0",
-        "vonage/client-core": "^3.0"
+        "vonage/client-core": "^4.0.4"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.2",
