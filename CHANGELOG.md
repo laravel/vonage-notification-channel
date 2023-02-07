@@ -1,6 +1,12 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.1.2...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.2.0...3.x)
+
+## [v3.2.0](https://github.com/laravel/vonage-notification-channel/compare/v3.1.2...v3.2.0) - 2023-02-06
+
+### Changed
+
+- Switch to `sms()` Client, improved GSM-7 Handling by @SecondeJK in https://github.com/laravel/vonage-notification-channel/pull/72
 
 ## [v3.1.2](https://github.com/laravel/vonage-notification-channel/compare/v3.1.1...v3.1.2) - 2023-01-26
 
