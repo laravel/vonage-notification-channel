@@ -80,7 +80,7 @@ class Vonage
         $signatureCredentials = null;
 
         if ($signatureSecret = $this->config['signature_secret'] ?? null) {
-            $signatureCredentials = new SignatureSecret($this->config['api_key'], $signatureSecret);
+            $signatureCredentials = new SignatureSecret($this->config['api_key'], $signatureSecret, $this->config['signature_method'] ?? 'md5hash');
         }
 
         if ($basicCredentials && $signatureCredentials) {
