@@ -22,6 +22,8 @@ class VonageChannelServiceProvider extends ServiceProvider
         $this->app->singleton(Client::class, function ($app) {
             $config = $app['config']['vonage'];
 
+            $httpClient = null;
+
             if ($httpClient = $config['http_client'] ?? null) {
                 $httpClient = $app->make($httpClient);
             } elseif (! class_exists('GuzzleHttp\Client')) {
