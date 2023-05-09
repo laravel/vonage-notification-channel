@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.2.0...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.2.1...3.x)
+
+## [v3.2.1](https://github.com/laravel/vonage-notification-channel/compare/v3.2.0...v3.2.1) - 2023-05-01
+
+- Allow to customise the signature_method by @ankurk91 in https://github.com/laravel/vonage-notification-channel/pull/78
 
 ## [v3.2.0](https://github.com/laravel/vonage-notification-channel/compare/v3.1.2...v3.2.0) - 2023-02-06
 
