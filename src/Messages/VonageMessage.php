@@ -124,7 +124,7 @@ class VonageMessage
     /**
      * Set the Vonage client instance.
      *
-     * @param  \Vonage\Client  $clientReference
+     * @param  \Vonage\Client  $client
      * @return $this
      */
     public function usingClient($client)
