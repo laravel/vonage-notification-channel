@@ -30,7 +30,7 @@ return [
 
     'api_secret' => env('VONAGE_SECRET'),
 
-    'application_id' =>  env('VONAGE_APPLICATION_ID'),
+    'application_id' => env('VONAGE_APPLICATION_ID'),
 
     /*
     |--------------------------------------------------------------------------
@@ -70,7 +70,7 @@ return [
     */
 
     'app' => [
-        'name' =>  env('VONAGE_APP_NAME', 'Laravel'),
+        'name' => env('VONAGE_APP_NAME', 'Laravel'),
         'version' => env('VONAGE_APP_VERSION', '1.1.2'),
     ],
 
