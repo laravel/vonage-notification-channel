@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.2.1...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.3.0...3.x)
+
+## [v3.3.0](https://github.com/laravel/vonage-notification-channel/compare/v3.2.1...v3.3.0) - 2024-01-15
+
+* Fix docblock by [@dwightwatson](https://github.com/dwightwatson) in https://github.com/laravel/vonage-notification-channel/pull/84
+* [3.x] Laravel v11 support by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/vonage-notification-channel/pull/86
 
 ## [v3.2.1](https://github.com/laravel/vonage-notification-channel/compare/v3.2.0...v3.2.1) - 2023-05-01
 
