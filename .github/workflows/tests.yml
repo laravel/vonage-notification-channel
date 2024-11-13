@@ -55,4 +55,9 @@ jobs:
            composer update --prefer-dist --no-interaction --no-progress --with="illuminate/support=^${{ matrix.laravel }}"
 
       - name: Execute tests
+        run: vendor/bin/phpunit --display-deprecations
+        if: matrix.laravel >= 10
+
+      - name: Execute tests
         run: vendor/bin/phpunit
+        if: matrix.laravel < 10
