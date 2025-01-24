@@ -54,7 +54,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-           composer update --prefer-dist --no-interaction --no-progress --with="illuminate/support:^${{ matrix.laravel }}"
+          composer update --prefer-dist --no-interaction --no-progress --with="illuminate/support:^${{ matrix.laravel }}"
 
       - name: Execute tests
         run: vendor/bin/phpunit ${{ matrix.laravel >= 10 && '--display-deprecations --fail-on-deprecation' || '' }}
