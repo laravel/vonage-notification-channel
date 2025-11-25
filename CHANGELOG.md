@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.3.2...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.3.3...3.x)
+
+## [v3.3.3](https://github.com/laravel/vonage-notification-channel/compare/v3.3.2...v3.3.3) - 2025-11-25
+
+* [3.x] PHP 8.5 Compatibility by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/vonage-notification-channel/pull/92
 
 ## [v3.3.2](https://github.com/laravel/vonage-notification-channel/compare/v3.3.1...v3.3.2) - 2025-01-24
 
