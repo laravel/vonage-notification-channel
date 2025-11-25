@@ -2,21 +2,18 @@
 
 namespace Illuminate\Notifications\Tests\Feature;
 
+use Orchestra\Testbench\Attributes\WithConfig;
 use Vonage\Client;
 use Vonage\Client\Credentials\Container;
 use Vonage\Client\Credentials\Keypair;
 use Vonage\Client\Credentials\SignatureSecret;
 
+#[WithConfig('vonage.api_key', 'my_api_key')]
+#[WithConfig('vonage.signature_secret', 'my_signature')]
+#[WithConfig('vonage.private_key', __DIR__.'/../fixtures/private.key')]
+#[WithConfig('vonage.application_id', 'application-id-123')]
 class ClientPrivateKeySignatureCredentialsTest extends FeatureTestCase
 {
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('vonage.private_key', __DIR__.'/../fixtures/private.key');
-        $app['config']->set('vonage.application_id', 'application-id-123');
-        $app['config']->set('vonage.api_key', 'my_api_key');
-        $app['config']->set('vonage.signature_secret', 'my_signature');
-    }
-
     public function testClientCreatedWithPrivateKeySignatureCredentials()
     {
         $credentials = $this->app->make(Client::class)->getCredentials();
