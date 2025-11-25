@@ -2,9 +2,12 @@
 
 namespace Illuminate\Notifications\Tests\Feature;
 
+use Orchestra\Testbench\Attributes\WithConfig;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic;
 
+#[WithConfig('vonage.api_key', 'my_api_key')]
+#[WithConfig('vonage.api_secret', 'my_secret')]
 class ClientBasicAPICredentialsTest extends FeatureTestCase
 {
     protected function getEnvironmentSetUp($app)

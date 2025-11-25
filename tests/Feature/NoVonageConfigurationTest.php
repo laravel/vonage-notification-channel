@@ -2,16 +2,13 @@
 
 namespace Illuminate\Notifications\Tests\Feature;
 
+use Orchestra\Testbench\Attributes\WithConfig;
 use RuntimeException;
 use Vonage\Client;
 
+#[WithConfig('vonage.api_key', 'my_api_key')]
 class NoVonageConfigurationTest extends FeatureTestCase
 {
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('vonage.api_key', 'my_api_key');
-    }
-
     public function testWhenNoConfigurationIsGivenExceptionIsRaised()
     {
         $this->expectException(RuntimeException::class);
