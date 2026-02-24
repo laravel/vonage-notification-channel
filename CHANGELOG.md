@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.3.3...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.3.4...3.x)
+
+## [v3.3.4](https://github.com/laravel/vonage-notification-channel/compare/v3.3.3...v3.3.4) - 2026-02-24
+
+* Laravel 13.x Compatibility by [@laravel-shift](https://github.com/laravel-shift) in https://github.com/laravel/vonage-notification-channel/pull/93
 
 ## [v3.3.3](https://github.com/laravel/vonage-notification-channel/compare/v3.3.2...v3.3.3) - 2025-11-25
 
