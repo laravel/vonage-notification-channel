@@ -1,7 +1,12 @@
 {
     "name": "laravel/vonage-notification-channel",
     "description": "Vonage Notification Channel for laravel.",
-    "keywords": ["laravel", "notifications", "vonage", "nexmo"],
+    "keywords": [
+        "laravel",
+        "notifications",
+        "vonage",
+        "nexmo"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -11,14 +16,14 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/notifications": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+        "illuminate/notifications": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
         "vonage/client-core": "^4.0.4"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.2",
-        "orchestra/testbench": "^6.47.1|^7.55|^8.36|^9.15|^10.8",
-        "phpstan/phpstan": "^1.10"
+        "orchestra/testbench": "^6.47.1|^7.55|^8.36|^9.15|^10.8|^11.0",
+        "phpstan/phpstan": "^1.10|^2.1"
     },
     "autoload": {
         "psr-4": {
