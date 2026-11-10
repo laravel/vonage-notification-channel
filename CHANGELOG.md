@@ -1,6 +1,19 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.3.5...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.4.0...3.x)
+
+## [v3.4.0](https://github.com/laravel/vonage-notification-channel/compare/v3.3.5...v3.4.0) - 2026-10-17
+
+### What's Changed
+
+* Remove security policy in favor of the org-wide default by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/vonage-notification-channel/pull/101
+* Bump shivammathur/setup-php from 2.37.2 to 2.40.0 in the github-actions group by [@dependabot](https://github.com/dependabot)[bot] in https://github.com/laravel/vonage-notification-channel/pull/102
+
+### New Contributors
+
+* [@pushpak1300](https://github.com/pushpak1300) made their first contribution in https://github.com/laravel/vonage-notification-channel/pull/101
+
+**Full Changelog**: https://github.com/laravel/vonage-notification-channel/compare/v3.3.5...v3.4.0
 
 ## [v3.3.5](https://github.com/laravel/vonage-notification-channel/compare/v3.3.4...v3.3.5) - 2026-07-25
 
