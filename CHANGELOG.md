@@ -1,6 +1,14 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.4.0...3.x)
+## [Unreleased](https://github.com/laravel/vonage-notification-channel/compare/v3.5.0...3.x)
+
+## [v3.5.0](https://github.com/laravel/vonage-notification-channel/compare/v3.4.0...v3.5.0) - 2026-11-11
+
+### What's Changed
+
+* Dependency floor bump by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/vonage-notification-channel/pull/105
+
+**Full Changelog**: https://github.com/laravel/vonage-notification-channel/compare/v3.4.0...v3.5.0
 
 ## [v3.4.0](https://github.com/laravel/vonage-notification-channel/compare/v3.3.5...v3.4.0) - 2026-10-17
 
